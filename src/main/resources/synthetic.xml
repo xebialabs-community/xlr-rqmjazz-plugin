@@ -1,0 +1,58 @@
+<!--
+ Copyright (c) 2019 XebiaLabs
+ 
+ This software is released under the MIT License.
+ https://opensource.org/licenses/MIT
+-->
+<synthetic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd" xmlns="http://www.xebialabs.com/deployit/synthetic">
+
+    <!--
+       #######################################################################################################################
+       #   Server Configuration
+       #######################################################################################################################
+    -->
+    <type type="rqmjazz.Server" extends="configuration.HttpConnection">
+        <property name="scriptLocation" required="false" hidden="true" default="rqm/control/check_connection.py" />
+    </type>
+
+    <!--
+        #######################################################################################################################
+        #  Run Test Suite
+        #######################################################################################################################
+    -->
+    <type type="rqmjazz.RunTestSuite" extends="xlrelease.PythonScript">
+        <property name="iconLocation" hidden="true" default="rtcjazz-ccm-icon.png"/>
+        <property name="taskColor" hidden="true" default="#b7deed" />
+        <property name="scriptLocation" required="false" hidden="true" default="rqm/control/create_workitem.py" />
+
+        <property name="server" category="input" label="Server" referenced-type="rqmjazz.Server" kind="ci"/>
+
+        <property name="project_area" category="input" label="Project Area" kind="string" description="Project area for work item" required="true"/>
+        <property name="workitem_type" category="input" label="Work Item Type" kind="string" description="Type of work item" required="true"/>
+        <property name="workitem_properties" category="input" label="Work Item Properties" kind="map_string_string" description="Properties of work item" required="false"/>        
+
+        <property name="workitem_ignore_errors" category="input" label="Ignore Errors" kind="boolean" description="Ignore errors" required="false"/>
+        <property name="workitem_suppress_email_notifications" category="input" label="Suppress Notifications" kind="boolean" description="Suppress e-mail notifications." required="false"/>
+        <property name="workitem_enable_delete_attachments" category="input" label="Enable Delete Attachments" kind="boolean" description="Enable the ability to delete attachments." required="false"/>
+        <property name="workitem_enable_delete_approvals" category="input" label="Enable Delete Approvals" kind="boolean" description="Enable the ability to delete approvals." required="false"/>
+        <property name="workitem_enforce_size_limits" category="input" label="Enforce Size Limits" kind="boolean" description="Enforce size limits on this work item." required="false"/>
+
+        <property name="workitem_id" category="output" label="Work Item ID" kind="string" description="ID of created work item" required="false"/>
+    </type>
+
+    <!--
+        #######################################################################################################################
+        #  Retrieve Test Results
+        #######################################################################################################################
+    -->
+    <type type="rqmjazz.RetrieveTestResults" extends="xlrelease.PythonScript">
+        <property name="iconLocation" hidden="true" default="rtcjazz-ccm-icon.png"/>
+        <property name="taskColor" hidden="true" default="#b7deed" />
+        <property name="scriptLocation" required="false" hidden="true" default="rqu/control/update_workitem.py" />
+
+        <property name="server" category="input" label="Server" referenced-type="rqmjazz.Server" kind="ci"/>
+
+    </type>
+
+</synthetic>

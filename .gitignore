@@ -1,0 +1,14 @@
+.gradle
+.project
+.DS_Store
+.pydevproject
+.settings
+.vscode
+.idea
+bin/
+build/
+.gradle/
+*.iml
+*.ipr
+*.iws
+*.pyc
