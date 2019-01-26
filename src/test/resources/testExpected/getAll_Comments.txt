@@ -1,0 +1,16 @@
+Description | Start Time | Build Id | Name | Passed | Link
+:---: | :---: | :---: | :---: | :---: | :---:
+Windows 10/googlechrome-71|2018-12-12 16:21:50|build-4|TestName4| |[View](http://saucelabs-stub:5000/jobs/b7ab2e2c6bbc468dbfb1c03b5dd89ecd)
+Windows 10/googlechrome-71|2018-12-12 16:21:24|build-3|TestName3| |[View](http://saucelabs-stub:5000/jobs/d395d6448d1046fbacbd9c1825c2e9e6)
+Windows 10/googlechrome-71|2018-12-12 16:20:51|build-2|TestName2| |[View](http://saucelabs-stub:5000/jobs/59d7a59da29a4af69409649d9089893c)
+Windows 10/googlechrome-71|2018-12-12 16:20:23|build-1|TestName1| |[View](http://saucelabs-stub:5000/jobs/83f9096074bd43cb8bf8b9e37dd5ee6a)
+Windows 10/firefox-49|2018-12-12 01:22:47| |verifyCommentInputTest[1]|True|[View](http://saucelabs-stub:5000/jobs/bbc9a0c577a747f08452fa99d202c255)
+Windows 2008/iexplore-11|2018-12-12 01:22:17| |verifyCommentInputTest[2]|True|[View](http://saucelabs-stub:5000/jobs/b20b836f4cd04c36877f2159268518b9)
+Mac 10.10/googlechrome-54|2018-12-12 01:22:17| |verifyCommentInputTest[4]|True|[View](http://saucelabs-stub:5000/jobs/b054724e0279456fb3c624335752ee4f)
+Windows 10/microsoftedge-14|2018-12-12 01:22:29| |verifyLinkTest[0]|True|[View](http://saucelabs-stub:5000/jobs/2eba55a3efc94ea5bb8dbfce10e7bf1d)
+Mac 10.10/googlechrome-54|2018-12-12 01:22:34| |verifyLinkTest[4]|True|[View](http://saucelabs-stub:5000/jobs/0764b31441c84944b7bf4dd1add416ff)
+Windows 10/firefox-49|2018-12-12 01:22:45| |verifyLinkTest[1]|True|[View](http://saucelabs-stub:5000/jobs/0173acb422574fdc8371ade381e4c7eb)
+Mac 10.11/safari-10|2018-12-12 01:22:04| |verifyLinkTest[3]|True|[View](http://saucelabs-stub:5000/jobs/bee70d25c8f242a8b83e2f7f3e4b7ca1)
+Windows 2008/iexplore-11|2018-12-12 01:22:01| |verifyLinkTest[2]|True|[View](http://saucelabs-stub:5000/jobs/a89a27a24c564c7cb56e9dd3eaa4628f)
+Mac 10.11/safari-10|2018-12-12 01:21:41| |verifyCommentInputTest[3]|True|[View](http://saucelabs-stub:5000/jobs/99e6b54b7c6d4f9bae5245844e9e6072)
+Windows 10/microsoftedge-14|2018-12-12 01:21:41| |verifyCommentInputTest[0]|True|[View](http://saucelabs-stub:5000/jobs/545766d28a0e4e6ab1b4099088f0870b)

@@ -1,0 +1,9 @@
+
+{
+  "id":"unused",
+  "type":"saucelabs.Server",
+  "title":"saucelabs",
+  "url":"http://saucelabs-stub:5000",
+  "username": "xlr_test",
+  "password": "admin"
+}

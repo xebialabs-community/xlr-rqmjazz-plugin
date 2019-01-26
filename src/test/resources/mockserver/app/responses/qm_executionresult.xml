@@ -1,0 +1,19 @@
+{
+    "feed": {
+        "link": [
+            {
+                "rel": "alternate",
+                "href": "https://dev2developer.aetna.com/qm/web/console/"
+            },
+            {
+                "rel": "self",
+                "href": "https://dev2developer.aetna.com/qm/service/com.ibm.rqm.integration.service.IIntegrationService/resources/_JTmEAPJyEei_NKP5UrdgcA/executionresult"
+            }
+        ],
+        "title": {
+            "content": "executionresult ATOM feed for project area XL Release Integration (qm)",
+            "type": "text"
+        },
+        "id": "https://dev2developer.aetna.com/qm/service/com.ibm.rqm.integration.service.IIntegrationService/resources/_JTmEAPJyEei_NKP5UrdgcA/executionresult"
+    }
+}

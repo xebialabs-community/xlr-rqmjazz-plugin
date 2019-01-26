@@ -1,0 +1,34 @@
+<!-- https://dev2developer.aetna.com/qm/oslc_qm/contexts/_JTmEAPJyEei_NKP5UrdgcA/resources/com.ibm.rqm.execution.TestcaseExecutionRecord -->
+<?xml version="1.0" encoding="UTF-8" ?>
+<rdf:RDF xmlns:oslc="http://open-services.net/ns/core#" xmlns:oslc_config="http://open-services.net/ns/config#" xmlns:process="http://jazz.net/ns/process#" xmlns:project__JTmEAPJyEei_NKP5UrdgcA_testExecutionRecord="https://dev2developer.aetna.com/qm/oslc_qm/contexts/_JTmEAPJyEei_NKP5UrdgcA/shape/resource/com.ibm.rqm.execution.TestcaseExecutionRecord#" xmlns:rqm_auto="http://jazz.net/ns/auto/rqm#" xmlns:bp="http://open-services.net/ns/basicProfile#" xmlns:calm="http://jazz.net/xmlns/prod/jazz/calm/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:cmx="http://open-services.net/ns/cm-x#" xmlns:rqm_lm="http://jazz.net/ns/qm/rqm/labmanagement#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:oslc_cm="http://open-services.net/ns/cm#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:rqm_qm="http://jazz.net/ns/qm/rqm#" xmlns:acp="http://jazz.net/ns/acp#" xmlns:oslc_rm="http://open-services.net/ns/rm#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:oslc_qm="http://open-services.net/ns/qm#" xmlns:oslc_auto="http://open-services.net/ns/auto#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rqm_process="http://jazz.net/xmlns/prod/jazz/rqm/process/1.0/" xmlns:acc="http://open-services.net/ns/core/acc#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <oslc:ResponseInfo rdf:about="https://dev2developer.aetna.com/qm/oslc_qm/contexts/_JTmEAPJyEei_NKP5UrdgcA/resources/com.ibm.rqm.execution.TestcaseExecutionRecord?rqm_qm.pageNum=0">
+        <oslc:totalCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</oslc:totalCount>
+        <bp:containerSortPredicates rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rqm_qm:orderIndex</bp:containerSortPredicates>
+        <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Results of a QM V2 Test Execution Record query.</dcterms:description>
+        <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QM V2 Test Execution Record Query Results</dcterms:title>
+    </oslc:ResponseInfo>
+    <oslc_qm:TestExecutionRecordQuery rdf:about="https://dev2developer.aetna.com/qm/oslc_qm/contexts/_JTmEAPJyEei_NKP5UrdgcA/resources/com.ibm.rqm.execution.TestcaseExecutionRecord">
+        <oslc_qm:testExecutionRecord>
+            <oslc_qm:TestExecutionRecord rdf:about="https://dev2developer.aetna.com/qm/oslc_qm/contexts/_JTmEAPJyEei_NKP5UrdgcA/resources/com.ibm.rqm.execution.TestcaseExecutionRecord/_NByHoCDCEemu2csRoV-23w">
+                <rqm_qm:orderIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</rqm_qm:orderIndex>
+                <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-01-25T16:56:48.154Z</dcterms:created>
+                <oslc:serviceProvider rdf:resource="https://dev2developer.aetna.com/qm/oslc_qm/contexts/_JTmEAPJyEei_NKP5UrdgcA/services.xml"/>
+                <rqm_process:hasPriority rdf:resource="https://dev2developer.aetna.com/qm/service/com.ibm.rqm.integration.service.IIntegrationService/process-info/_JTmEAPJyEei_NKP5UrdgcA/priority/literal.priority.101"/>
+                <oslc_qm:runsTestCase rdf:resource="https://dev2developer.aetna.com/qm/oslc_qm/contexts/_JTmEAPJyEei_NKP5UrdgcA/resources/com.ibm.rqm.planning.VersionedTestCase/_DZmFYSDCEemu2csRoV-23w"/>
+                <dcterms:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://dev2developer.aetna.com/qm/oslc_qm/contexts/_JTmEAPJyEei_NKP5UrdgcA/resources/com.ibm.rqm.execution.TestcaseExecutionRecord/_NByHoCDCEemu2csRoV-23w</dcterms:identifier>
+                <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-01-25T16:56:48.197Z</dcterms:modified>
+                <oslc:instanceShape rdf:resource="https://dev2developer.aetna.com/qm/oslc_qm/contexts/_JTmEAPJyEei_NKP5UrdgcA/shape/resource/com.ibm.rqm.execution.TestcaseExecutionRecord"/>
+                <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+                <process:projectArea rdf:resource="https://dev2developer.aetna.com/qm/process/project-areas/_JTmEAPJyEei_NKP5UrdgcA"/>
+                <oslc:shortId rdf:datatype="http://www.w3.org/2001/XMLSchema#int">22327</oslc:shortId>
+                <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XLR_CheckAuth</dcterms:title>
+                <dcterms:contributor rdf:resource="https://dev2developer.aetna.com/jts/users/unassigned"/>
+                <rqm_qm:weight rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</rqm_qm:weight>
+                <acp:accessControl rdf:resource="https://dev2developer.aetna.com/qm/oslc_qm/accessControl/_JTmEAPJyEei_NKP5UrdgcA"/>
+                <dcterms:creator rdf:resource="https://dev2developer.aetna.com/jts/users/N346883"/>
+                <dcterms:relation rdf:resource="https://dev2developer.aetna.com/qm/service/com.ibm.rqm.integration.service.IIntegrationService/resources/_JTmEAPJyEei_NKP5UrdgcA/executionworkitem/urn:com.ibm.rqm:executionworkitem:22327"/>
+                <acc:accessContext rdf:resource="https://dev2developer.aetna.com/qm/acclist#_JTmEAPJyEei_NKP5UrdgcA"/>
+            </oslc_qm:TestExecutionRecord>
+        </oslc_qm:testExecutionRecord>
+    </oslc_qm:TestExecutionRecordQuery>
+</rdf:RDF>

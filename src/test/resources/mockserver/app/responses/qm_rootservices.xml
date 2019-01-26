@@ -1,0 +1,131 @@
+<?xml version="1.0" ?>
+<!-- 
+    Licensed Materials - Property of IBM
+    © Copyright IBM Corporation 2010, 2016. All Rights Reserved.
+    
+    Note to U.S. Government Users Restricted Rights:
+    Use, duplication or disclosure restricted by GSA ADP Schedule
+    Contract with IBM Corp.
+-->
+<rdf:Description xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/terms/" xmlns:jfs="http://jazz.net/xmlns/prod/jazz/jfs/1.0/" xmlns:jtp="http://jazz.net/xmlns/prod/jazz/jtp/0.6/" xmlns:jd="http://jazz.net/xmlns/prod/jazz/discovery/1.0/" xmlns:jp06="http://jazz.net/xmlns/prod/jazz/process/0.6/" xmlns:ju="http://jazz.net/ns/ui#" xmlns:jdb="http://jazz.net/xmlns/prod/jazz/dashboard/1.0/" xmlns:rqm="http://jazz.net/xmlns/prod/jazz/rqm/qm/1.0/" xmlns:qm_rqm="http://jazz.net/ns/qm/rqm#" xmlns:oslc="http://open-services.net/ns/core#" xmlns:trs="http://jazz.net/ns/trs#" xmlns:trs2="http://open-services.net/ns/core/trs#" rdf:about="https://dev2developer.aetna.com/qm/rootservices">
+    <!-- 
+        Default root service registry document for an RQM server.
+        Contains contributions for core JFS services and components
+        and OSLC Quality Management.
+        Specification is available at https://jazz.net/wiki/bin/view/Main/RootServicesSpec
+    -->
+    <!-- Add descriptive title here -->
+    <dc:title xml:lang="en">Quality Management</dc:title>
+    <!-- List of friends (applications known to this application) -->
+    <jd:friends xmlns:jd="http://jazz.net/xmlns/prod/jazz/discovery/1.0/" rdf:resource="https://dev2developer.aetna.com/qm/friends"/>
+    <!-- Viewlet-related properties -->
+    <jd:viewletServiceRoot rdf:resource="https://dev2developer.aetna.com/qm"/>
+    <jd:viewletWebUIRoot rdf:resource="https://dev2developer.aetna.com/qm"/>
+    <!-- Default root service registry document for a JFS server. -->
+    <jd:jsaSsoEnabled>false</jd:jsaSsoEnabled>
+    <jfs:oauthRequestTokenUrl rdf:resource="https://dev2developer.aetna.com/qm/oauth-request-token"/>
+    <jfs:oauthAccessTokenUrl rdf:resource="https://dev2developer.aetna.com/qm/oauth-access-token"/>
+    <jfs:oauthRealmName>Jazz</jfs:oauthRealmName>
+    <jfs:oauthDomain>https://dev2developer.aetna.com/qm</jfs:oauthDomain>
+    <jfs:oauthUserAuthorizationUrl rdf:resource="https://dev2developer.aetna.com/qm/oauth-authorize"/>
+    <jfs:oauthRequestConsumerKeyUrl rdf:resource="https://dev2developer.aetna.com/qm/oauth-request-consumer"/>
+    <!-- JAuth URLS -->
+    <jfs:jauthCheckAuthUrl rdf:resource="https://dev2developer.aetna.com/qm/jauth-check-auth"/>
+    <!-- service for finding users and getting user info -->
+    <jfs:users rdf:resource="https://dev2developer.aetna.com/jts/users"/>
+    <!-- Service to redirect to the resource that represents the authenticated user -->
+    <jfs:currentUser rdf:resource="https://dev2developer.aetna.com/qm/whoami"/>
+    <!-- JFS storage service -->
+    <jfs:storage rdf:resource="https://dev2developer.aetna.com/qm/storage"/>
+    <!-- JFS SPARQL query service -->
+    <jfs:query rdf:resource="https://dev2developer.aetna.com/qm/query"/>
+    <!-- Put RQM changes in here, so we do not have to merge all the time : START -->
+    <!-- Quality Management services catalog -->
+    <oslc_qm:qmServiceProviders xmlns:oslc_qm="http://open-services.net/xmlns/qm/1.0/" rdf:resource="https://dev2developer.aetna.com/qm/oslc_qm/catalog"/>
+    <!-- Quality Management Test Automation services catalog -->
+    <oslc_auto:autoServiceProviders xmlns:oslc_auto="http://open-services.net/ns/auto#" rdf:resource="https://dev2developer.aetna.com/qm/oslc_auto_test/catalog"/>
+    <!-- QM TRS 1.0 -->
+    <qm_rqm:trackedResourceSetProvider>
+        <trs:TrackedResourceSetProvider>
+            <trs:trackedResourceSet rdf:resource="https://dev2developer.aetna.com/qm/trs"/>
+            <dc:title xml:lang="en">TRS 1.0 for QM Resources</dc:title>
+            <dc:description xml:lang="en">TRS 1.0 feed for QM resources</dc:description>
+            <dc:type rdf:resource="http://open-services.net/ns/qm#"/>
+        </trs:TrackedResourceSetProvider>
+    </qm_rqm:trackedResourceSetProvider>
+    <!-- QM TRS 2.0 -->
+    <qm_rqm:trackedResourceSetProvider>
+        <trs2:TrackedResourceSet>
+            <trs2:trackedResourceSet rdf:resource="https://dev2developer.aetna.com/qm/trs2"/>
+            <oslc:domain rdf:resource="http://open-services.net/ns/config#"/>
+            <dc:title xml:lang="en">TRS 2.0 for QM Resources</dc:title>
+            <dc:description xml:lang="en">TRS 2.0 feed for QM resources</dc:description>
+            <dc:type rdf:resource="http://open-services.net/ns/qm#"/>
+        </trs2:TrackedResourceSet>
+    </qm_rqm:trackedResourceSetProvider>
+    <!-- Process TRS 2.0 -->
+    <qm_rqm:trackedResourceSetProvider>
+        <trs2:TrackedResourceSet>
+            <trs2:trackedResourceSet rdf:resource="https://dev2developer.aetna.com/qm/process-trs2"/>
+            <dc:title xml:lang="en">TRS 2.0 for QM Process Resources</dc:title>
+            <dc:description xml:lang="en">TRS 2.0 feed for QM resources</dc:description>
+            <dc:type rdf:resource="http://jazz.net/ns/process#"/>
+        </trs2:TrackedResourceSet>
+    </qm_rqm:trackedResourceSetProvider>
+    <!-- Server Rename Status -->
+    <jfs:serverRenameStatus rdf:resource="https://dev2developer.aetna.com/qm/appServerRenameStatus"/>
+    <!-- Put RQM changes in here, so we do not have to merge all the time : END -->
+    <!-- Change Management service catalog -->
+    <!-- Deprecate QM as Change Management service provider starting from QM 6.0, see WI135518 -->
+    <!-- 
+        <oslc_cm:cmServiceProviders
+        xmlns:oslc_cm="http://open-services.net/xmlns/cm/1.0/"
+        rdf:resource="https://dev2developer.aetna.com/qm/oslc/workitems/catalog" />
+    -->
+    <!-- Configuration Management service catalog -->
+    <oslc_config:cmServiceProviders xmlns:oslc_config="http://open-services.net/ns/config#" rdf:resource="https://dev2developer.aetna.com/qm/oslc_config/catalog"/>
+    <!-- Widget Catalog service icon (provisional) -->
+    <ju:widgetCatalog rdf:resource="https://dev2developer.aetna.com/qm/jfs/WidgetCatalog"/>
+    <!-- JFS indexing service -->
+    <jfs:indexing rdf:resource="https://dev2developer.aetna.com/qm/indexing"/>
+    <!-- JFS revisions and history of storage resources -->
+    <jfs:history rdf:resource="https://dev2developer.aetna.com/qm/history"/>
+    <!-- JFS full text search -->
+    <jfs:search rdf:resource="https://dev2developer.aetna.com/qm/search"/>
+    <!-- JFS baseline service -->
+    <jfs:baselines rdf:resource="https://dev2developer.aetna.com/qm/baselines"/>
+    <!-- JFS mailer service -->
+    <jfs:mailer rdf:resource="https://dev2developer.aetna.com/qm/mailer"/>
+    <!-- Project areas service. This service is provisional and may change in the next release. -->
+    <jp06:projectAreas rdf:resource="https://dev2developer.aetna.com/qm/process/project-areas"/>
+    <!-- Process templates service. This service is provisional and may change in the next release. -->
+    <jp06:processTemplates rdf:resource="https://dev2developer.aetna.com/qm/process/templates"/>
+    <!-- Process security service. This service is provisional and may change in the next release. -->
+    <jp06:processSecurity rdf:resource="https://dev2developer.aetna.com/qm/process-security"/>
+    <jd:infocenterRoot rdf:resource="https://dev2developer.aetna.com/clmhelp"/>
+    <rqm:majorVersion>6</rqm:majorVersion>
+    <rqm:version>6.0.3</rqm:version>
+    <!-- CLM automated setup -->
+    <jd:registration rdf:resource="https://dev2developer.aetna.com/qm/service/com.ibm.team.repository.service.internal.setup.IRegistrationHandlerService"/>
+    <jfs:setupWizardDescriptor rdf:resource="https://dev2developer.aetna.com/qm/service/com.ibm.team.repository.service.internal.setup.ISetupWizardDescriptorService"/>
+    <jfs:adminWebUI rdf:resource="https://dev2developer.aetna.com/qm/admin"/>
+    <!-- Discovery service for the JFS server and associated applications -->
+    <jd:discovery rdf:resource="https://dev2developer.aetna.com/qm/discovery"/>
+    <!-- JFS revisions and history of storage resources -->
+    <!-- JFS bulk operations service -->
+    <jfs:bulkOperations rdf:resource="https://dev2developer.aetna.com/qm/bulk"/>
+    <!-- JFS changes service -->
+    <jfs:changes rdf:resource="https://dev2developer.aetna.com/qm/changes"/>
+    <!-- Allow remote oauth consumer key authorization -->
+    <jfs:oauthApprovalModuleUrl rdf:resource="https://dev2developer.aetna.com/qm/_ajax-modules/com.ibm.team.repository.AuthorizeOAuth"/>
+    <!-- Dashboards service (provisional) -->
+    <jdb:dashboards rdf:resource="https://dev2developer.aetna.com/qm/dashboards"/>
+    <!-- Application About service -->
+    <oslc:publisher rdf:resource="https://dev2developer.aetna.com/qm/application-about"/>
+    <jtp:associations rdf:resource="https://dev2developer.aetna.com/qm/process-authoring/associations"/>
+    <jtp:defaultPracticeLibraryUrl rdf:resource="https://dev2developer.aetna.com/qm/process-authoring/libraries/shared"/>
+    <jtp:file rdf:resource="https://dev2developer.aetna.com/qm/process-authoring/file"/>
+    <jtp:license rdf:resource="https://dev2developer.aetna.com/qm/process-authoring/license"/>
+    <jtp:practices rdf:resource="https://dev2developer.aetna.com/qm/process-authoring/practices"/>
+    <jtp:processDescriptions rdf:resource="https://dev2developer.aetna.com/qm/process-authoring/descriptions"/>
+</rdf:Description>

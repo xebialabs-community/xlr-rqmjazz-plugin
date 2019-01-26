@@ -13,7 +13,9 @@
        #######################################################################################################################
     -->
     <type type="rqmjazz.Server" extends="configuration.HttpConnection">
-        <property name="scriptLocation" required="false" hidden="true" default="rqm/control/check_connection.py" />
+        <property name="scriptLocation" required="false" hidden="true" default="rqmjazz/control/check_connection.py" />
+        <property name="username" required="false" description="Optional username override" />
+        <property name="password" required="false" description="Optional password override"  password="true" />
     </type>
 
     <!--
@@ -24,21 +26,14 @@
     <type type="rqmjazz.RunTestSuite" extends="xlrelease.PythonScript">
         <property name="iconLocation" hidden="true" default="rtcjazz-ccm-icon.png"/>
         <property name="taskColor" hidden="true" default="#b7deed" />
-        <property name="scriptLocation" required="false" hidden="true" default="rqm/control/create_workitem.py" />
+        <property name="scriptLocation" required="false" hidden="true" default="rqmjazz/control/run_test_suite.py" />
 
         <property name="server" category="input" label="Server" referenced-type="rqmjazz.Server" kind="ci"/>
 
-        <property name="project_area" category="input" label="Project Area" kind="string" description="Project area for work item" required="true"/>
-        <property name="workitem_type" category="input" label="Work Item Type" kind="string" description="Type of work item" required="true"/>
-        <property name="workitem_properties" category="input" label="Work Item Properties" kind="map_string_string" description="Properties of work item" required="false"/>        
+        <property name="project_area" category="input" label="Project Area" kind="string" description="Project area for test suite" required="true"/>
+        <property name="tser_id" category="input" label="TSER Id" kind="string" description="Integer ID of the test suite execution record to execute" required="true"/>
 
-        <property name="workitem_ignore_errors" category="input" label="Ignore Errors" kind="boolean" description="Ignore errors" required="false"/>
-        <property name="workitem_suppress_email_notifications" category="input" label="Suppress Notifications" kind="boolean" description="Suppress e-mail notifications." required="false"/>
-        <property name="workitem_enable_delete_attachments" category="input" label="Enable Delete Attachments" kind="boolean" description="Enable the ability to delete attachments." required="false"/>
-        <property name="workitem_enable_delete_approvals" category="input" label="Enable Delete Approvals" kind="boolean" description="Enable the ability to delete approvals." required="false"/>
-        <property name="workitem_enforce_size_limits" category="input" label="Enforce Size Limits" kind="boolean" description="Enforce size limits on this work item." required="false"/>
-
-        <property name="workitem_id" category="output" label="Work Item ID" kind="string" description="ID of created work item" required="false"/>
+        <property name="result_url" category="output" label="Result URL" kind="string" description="URL of test suite execution results" required="false"/>
     </type>
 
     <!--
@@ -49,10 +44,13 @@
     <type type="rqmjazz.RetrieveTestResults" extends="xlrelease.PythonScript">
         <property name="iconLocation" hidden="true" default="rtcjazz-ccm-icon.png"/>
         <property name="taskColor" hidden="true" default="#b7deed" />
-        <property name="scriptLocation" required="false" hidden="true" default="rqu/control/update_workitem.py" />
+        <property name="scriptLocation" required="false" hidden="true" default="rqmjazz/control/retrieve_test_results.py" />
 
         <property name="server" category="input" label="Server" referenced-type="rqmjazz.Server" kind="ci"/>
 
+        <property name="result_url" category="input" label="Result URL" kind="string" description="URL of test suite execution results" required="true"/>
+
+        <property name="job_result" category="output" label="Job Result" kind="string" description="Result of test suite execution job" required="false"/>
     </type>
 
 </synthetic>

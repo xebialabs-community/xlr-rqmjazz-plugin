@@ -2,44 +2,46 @@ import org.apache.tools.ant.filters.ReplaceTokens
 
 plugins {
   id "com.github.hierynomus.license" version "0.14.0"
-  id "com.github.hierynomus.jython" version "0.8.0"
   id "com.xebialabs.xldp" version "1.0.5"
   id 'nebula.release' version '6.0.0'
-  id 'nebula.lint' version '6.1.4'
+  id "com.xebialabs.xl.docker" version "1.1.0"
 }
 
-repositories {
-    mavenLocal()
-    mavenCentral()
-    maven {
-      url 'https://dist.xebialabs.com/public/maven2'
-    }
-}
-
-version = '1.0.0'
-def apiVersion = '2018.5.0'
-def artifactId = "xld-rqmjazz-plugin"
+version="1.0.0.RC1"
 
 apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
 apply plugin: 'maven'
+apply plugin: "com.xebialabs.xl.docker"
 
-dependencies {
+repositories {
+  mavenLocal()
+  mavenCentral()
+  maven {
+    url 'https://dist.xebialabs.com/public/maven2'
+  }
+}
+
+
+xlDocker {
+  compileImage = 'xebialabsunsupported/xlr_dev_compile'
+  compileVersion = 'v8.0.0.1'
+  runImage = 'xebialabsunsupported/xlr_dev_run'
+  runVersion = 'v8.1.0.1'
+  runPortMapping = '15516:5516'
 }
 
 processResources {
   filter ReplaceTokens, tokens: [
-    'project.version': project.version.toString(),
-    'artifactId': artifactId
+    'project.version': version.toString(),
+    'project.name'   : rootProject.name
   ]
 }
 
 task pyTest(type: Exec) {
     workingDir 'src/test'
     commandLine 'python', '-m', 'unittest', 'discover'
-}
-
-gradleLint {
-  rules = ['unused-dependency']
 }
 
 license {
