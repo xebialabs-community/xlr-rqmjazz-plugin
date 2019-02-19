@@ -12,6 +12,8 @@
 
 # Overview #
 
+**NOTE: This plugin is not fully tested and likely does not work. It is intended as a starting point for an upcoming customer implementation engagement.**
+
 This plugin provides the ability to manipulate work items in IBM rqm.
 
 See the **XL Release Reference Manual** for background information on XL Release and plugin concepts.
