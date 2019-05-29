@@ -29,6 +29,8 @@
         <property name="scriptLocation" required="false" hidden="true" default="rqmjazz/control/run_test_suite.py" />
 
         <property name="server" category="input" label="Server" referenced-type="rqmjazz.Server" kind="ci"/>
+        <property name="username" category="input" label="Username" kind="string" description="Optional username to override server credentials." required="false" />
+        <property name="password" category="input" label="Password" kind="string" description="Optional password to override server credentials." required="false" password="true"/>
 
         <property name="project_area" category="input" label="Project Area" kind="string" description="Project area for test suite" required="true"/>
         <property name="tser_id" category="input" label="TSER Id" kind="string" description="Integer ID of the test suite execution record to execute" required="true"/>
@@ -47,6 +49,8 @@
         <property name="scriptLocation" required="false" hidden="true" default="rqmjazz/control/retrieve_test_results.py" />
 
         <property name="server" category="input" label="Server" referenced-type="rqmjazz.Server" kind="ci"/>
+        <property name="username" category="input" label="Username" kind="string" description="Optional username to override server credentials." required="false" />
+        <property name="password" category="input" label="Password" kind="string" description="Optional password to override server credentials." required="false" password="true"/>
 
         <property name="result_url" category="input" label="Result URL" kind="string" description="URL of test suite execution results" required="true"/>
 

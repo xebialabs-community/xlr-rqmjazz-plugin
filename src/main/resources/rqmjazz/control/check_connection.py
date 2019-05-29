@@ -5,7 +5,10 @@
 
 # rtcjazz/control/check_connection.py
 
+import logging
+
 from rqmjazz.core.RQMClient import RQMClient
+
 
 def process(task_vars):
     conf = task_vars['configuration']
@@ -25,7 +28,7 @@ def process(task_vars):
         'proxyPassword': conf._delegate.getProxyPassword()
     }
 
-    client = RQMClient.createClient(server, server["username"], server["password"])
+    client = RQMClient.create_client(server, server["username"], server["password"])
     result = client.check_connection()
 
 if __name__ == '__main__' or __name__ == '__builtin__':

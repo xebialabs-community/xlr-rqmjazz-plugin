@@ -1,12 +1,12 @@
 import org.apache.tools.ant.filters.ReplaceTokens
 
 plugins {
-  id "com.github.hierynomus.license" version "0.14.0"
+//  id "com.github.hierynomus.license" version "0.14.0"
   id 'nebula.release' version '6.0.0'
   id "com.xebialabs.xl.docker" version "1.1.0"
 }
 
-version="1.0.0.RC1"
+version="1.0.0.RC1.2"
 
 apply plugin: 'java'
 apply plugin: 'idea'
@@ -43,9 +43,9 @@ task pyTest(type: Exec) {
     commandLine 'python', '-m', 'unittest', 'discover'
 }
 
-license {
-  header rootProject.file('License.md')
-  strictCheck true
-  ext.year = Calendar.getInstance().get(Calendar.YEAR)
-  ext.name = 'XEBIALABS'
-}
+// license {
+//   header rootProject.file('License.md')
+//   strictCheck true
+//   ext.year = Calendar.getInstance().get(Calendar.YEAR)
+//   ext.name = 'XEBIALABS'
+// }

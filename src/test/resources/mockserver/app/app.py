@@ -61,6 +61,20 @@ def index():
     return "Hello, from Mock Server!"
 
 
+@app.route('/qm/service/com.ibm.rqm.common.service.rest.IOptionRestService/j_security_check', methods=['POST'])
+def doLogin():
+    # print('Type: %s' % type(request))
+    # print('Vars: %s' % vars(request))
+    # print('Dir:  %s' % dir(request))
+    # print('Request ------\n')
+    # print(request)
+    print('Data: %s' % request.get_data())
+
+    resp = make_response('ok', 200)
+    resp.set_cookie('rqmcookie', 'I am cookie')
+    return resp
+
+
 @app.route('/qm/rootservices', methods=['GET'])
 @requires_auth
 def getQmRootServices():
@@ -72,49 +86,16 @@ def getQmCatalog():
     return getFile("qm_catalog.xml")
 
 
+@app.route('/service/com.ibm.rqm.execution.common.service.rest.ITestcaseExecutionRecordRestService/executeDTO', methods=['POST'])
+def runTest():
+    resp = make_response( ("ok", 200) )
+    resp.headers['Content-Location'] = '/somewhere/special'
+    return resp
 
 
-
-# from RTC, reference only
-@app.route('/ccm/oslc/workitems/<workitem_id>', methods=['GET'])
-@requires_auth
-def getCcmWorkitem(workitem_id):
-    return getFile("ccm_workitem.json")
-
-
-@app.route('/ccm/oslc/workitems/<workitem_id>/rtc_cm:comments', methods=['GET'])
-@requires_auth
-def getCcmWorkitemComments(workitem_id):
-    return getFile("ccm_workitem_comments.json")
-
-
-@app.route('/ccm/oslc/workitems/catalog', methods=['GET'])
-@requires_auth
-def getCcmWorkitemsCatalog():
-    return getFile("ccm_workitems_catalog.xml")
-
-
-@app.route('/ccm/oslc/contexts/<context>/workitems/services.xml', methods=['GET'])
-@requires_auth
-def getCcmContextWorkitemsServices(context):
-    if context == '_D6My4PJxEeiTkd5TZ1OBVQ':
-        return getFile("ccm_context_workitems_services_2.xml")
-    else:
-        return getFile("ccm_context_workitems_services.xml")
-
-# create a work item
-@app.route('/ccm/oslc/contexts/<context>/workitems/com.ibm.team.workitem.workItemType.task', methods=['POST'])
-@requires_auth
-def getCcmCreateWorkitemTask(context):
-    print request.data
-    return getFile("ccm_create_workitem.json")
-
-# update a work item
-@app.route('/ccm/resource/itemName/com.ibm.team.workitem.WorkItem/<workitem_id>', methods=['PUT'])
-@requires_auth
-def getCcmUpdateWorkitemTask(workitem_id):
-    print request.data
-    return getFile("ccm_create_workitem.json")
+@app.route('/somewhere/special', methods=['GET'])
+def getResults():
+    return getFile("qm_executionresult.xml")
 
 
 if __name__ == '__main__':

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<rdf:RDFxmlns:calm="http://jazz.net/xmlns/prod/jazz/calm/1.0/"xmlns:dc="http://purl.org/dc/elements/1.1/"xmlns:rqm_qm="http://jazz.net/ns/qm/rqm#"xmlns:ns9="http://jazz.net/xmlns/prod/jazz/process/1.0/"xmlns:oslc="http://open-services.net/ns/core#"xmlns:oslc_qm="http://open-services.net/ns/qm#"xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"xmlns:ns6="http://open-services.net/xmlns/qm/1.0/"xmlns:ns10="http://open-services.net/xmlns/discovery/1.0/"xmlns:ns11="http://jazz.net/xmlns/prod/jazz/presentation/1.0/"xmlns:dcterms="http://purl.org/dc/terms/">
+    <oslc:ServiceProviderCatalogns12:type="oslc:ServiceProviderCatalog"rdf:about="https://dev2developer.aetna.com/qm/oslc_qm/catalog"xmlns:ns12="http://www.w3.org/2001/XMLSchema-instance">
+        <dcterms:title>RQM Quality Management Service Provider Catalog</dcterms:title>
+        <dcterms:description>Rational Quality Manager version 6.0.3</dcterms:description>
+        <dcterms:publisher>
+            <oslc:Publisher>…</oslc:Publisher>
+        </dcterms:publisher>
+        <oslc:domainrdf:resource="http://open-services.net/ns/qm#"/>
+        <oslc:serviceProvider>
+            <oslc:ServiceProviderns12:type="oslc:ServiceProvider"rdf:about="https://dev2developer.aetna.com/qm/oslc_qm/contexts/_RboONt5QEeacoacf4KI1lw/services.xml">
+                <dcterms:title>Digital Transformation (qm)</dcterms:title>
+                <dcterms:description>Rational Quality Manager (RQM) project area for the Digital Transformation program</dcterms:description>
+                <oslc:detailsrdf:resource="https://dev2developer.aetna.com/qm/process/project-areas/_RboONt5QEeacoacf4KI1lw"/>
+                <ns9:consumerRegistryrdf:resource="https://dev2developer.aetna.com/qm/process/project-areas/_RboONt5QEeacoacf4KI1lw/links"/>
+            </oslc:ServiceProvider>
+        </oslc:serviceProvider>
+        <oslc:serviceProvider>
+            <oslc:ServiceProviderns12:type="oslc:ServiceProvider"rdf:about="https://dev2developer.aetna.com/qm/oslc_qm/contexts/_ytCtwFLXEeiv2vcT1vHCtA/services.xml">
+                <dcterms:title>DDR_Template (qm)</dcterms:title>
+                <dcterms:description>DDR_Template (qm)</dcterms:description>
+                <oslc:detailsrdf:resource="https://dev2developer.aetna.com/qm/process/project-areas/_ytCtwFLXEeiv2vcT1vHCtA"/>
+                <ns9:consumerRegistryrdf:resource="https://dev2developer.aetna.com/qm/process/project-areas/_ytCtwFLXEeiv2vcT1vHCtA/links"/>
+            </oslc:ServiceProvider>
+        </oslc:serviceProvider>
+        <oslc:serviceProvider>
+            <oslc:ServiceProviderns12:type="oslc:ServiceProvider"rdf:about="https://dev2developer.aetna.com/qm/oslc_qm/contexts/_JTmEAPJyEei_NKP5UrdgcA/services.xml">
+                <dcterms:title>XL Release Integration (qm)</dcterms:title>
+                <dcterms:description>XL Release Integration (qm)</dcterms:description>
+                <oslc:detailsrdf:resource="https://dev2developer.aetna.com/qm/process/project-areas/_JTmEAPJyEei_NKP5UrdgcA"/>
+                <ns9:consumerRegistryrdf:resource="https://dev2developer.aetna.com/qm/process/project-areas/_JTmEAPJyEei_NKP5UrdgcA/links"/>
+            </oslc:ServiceProvider>
+        </oslc:serviceProvider>
+        <oslc:serviceProvider>
+            <oslc:ServiceProviderns12:type="oslc:ServiceProvider"rdf:about="https://dev2developer.aetna.com/qm/oslc_qm/contexts/_JD8TsDFvEeG6MZXcc-1NBA/services.xml">…</oslc:ServiceProvider>
+        </oslc:serviceProvider>
+        <oslc:serviceProvider>
+            <oslc:ServiceProviderns12:type="oslc:ServiceProvider"rdf:about="https://dev2developer.aetna.com/qm/oslc_qm/contexts/_U1xv0EklEeGNQflsezEicA/services.xml">…</oslc:ServiceProvider>
+        </oslc:serviceProvider>
+        <oslc:serviceProvider>
+            <oslc:ServiceProviderns12:type="oslc:ServiceProvider"rdf:about="https://dev2developer.aetna.com/qm/oslc_qm/contexts/_N6yl8PbEEeGaiOMhuHOf4A/services.xml">…</oslc:ServiceProvider>
+        </oslc:serviceProvider>
+        <oslc:serviceProvider>
+            <oslc:ServiceProviderns12:type="oslc:ServiceProvider"rdf:about="https://dev2developer.aetna.com/qm/oslc_qm/contexts/_o6ghgDbuEea9lOenpvVaiw/services.xml">…</oslc:ServiceProvider>
+        </oslc:serviceProvider>
+        <oslc:serviceProvider>
+            <oslc:ServiceProviderns12:type="oslc:ServiceProvider"rdf:about="https://dev2developer.aetna.com/qm/oslc_qm/contexts/_-H_FAFfhEeaejKv4O5mpGg/services.xml">…</oslc:ServiceProvider>
+        </oslc:serviceProvider>
+        <oslc:serviceProvider>
+            <oslc:ServiceProviderns12:type="oslc:ServiceProvider"rdf:about="https://dev2developer.aetna.com/qm/oslc_qm/contexts/_RHX6IGCIEeaejav4O5mpGg/services.xml">…</oslc:ServiceProvider>
+        </oslc:serviceProvider>
+        <oslc:serviceProvider>
+            <oslc:ServiceProviderns12:type="oslc:ServiceProvider"rdf:about="https://dev2developer.aetna.com/qm/oslc_qm/contexts/_UNhcIWuTEeaejav4O5mpGg/services.xml">…</oslc:ServiceProvider>
+        </oslc:serviceProvider>
+        <oslc:oauthConfiguration>
+            <oslc:OAuthConfiguration>
+                <oslc:oauthRequestTokenURIrdf:resource="https://dev2developer.aetna.com/qm/oauth-request-token"/>
+                <oslc:authorizationURIrdf:resource="https://dev2developer.aetna.com/qm/oauth-authorize"/>
+                <oslc:oauthAccessTokenURIrdf:resource="https://dev2developer.aetna.com/qm/oauth-access-token"/>
+            </oslc:OAuthConfiguration>
+        </oslc:oauthConfiguration>
+    </oslc:ServiceProviderCatalog>
+</rdf:RDF>
+
+<!-- 
+Error:
+
+javax.script.ScriptException: Traceback (most recent call last):
+  File "<script>", line 30, in <module>
+  File "<script>", line 27, in process
+  File "__pyclasspath__/rqmjazz/core/RQMClient.py", line 73, in run_test_suite
+  File "__pyclasspath__/rqmjazz/core/RQMClient.py", line 127, in _get_context_id
+  File "C:\Users\n346883\workspace\xl-release-8.6.2-server\lib\jython-standalone-2.7.1.patch2618.jar\Lib\xml\etree\ElementTree.py", line 1314, in XML
+  File "C:\Users\n346883\workspace\xl-release-8.6.2-server\lib\jython-standalone-2.7.1.patch2618.jar\Lib\xml\etree\ElementTree.py", line 1667, in close
+  File "C:\Users\n346883\workspace\xl-release-8.6.2-server\lib\jython-standalone-2.7.1.patch2618.jar\Lib\xml\etree\ElementTree.py", line 1519, in _raiseerror
+  File "<string>", line None
+xml.etree.ElementTree.ParseError: The reference to entity "etag" must end with the ';' delimiter.
+-->

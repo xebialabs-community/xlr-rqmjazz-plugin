@@ -10,7 +10,8 @@ import logging
 import com.xhaus.jyson.JysonCodec as json
 import xml.etree.ElementTree as ET
 
-from rqmjazz.core.HttpRequestPlus import HttpRequestPlus
+# from rqmjazz.core.HttpRequestPlus import HttpRequestPlus
+from rqmjazz.core.HttpClient import HttpClient
 
 logging.basicConfig(filename='log/plugin.log',
                             filemode='a',
@@ -18,35 +19,49 @@ logging.basicConfig(filename='log/plugin.log',
                             datefmt='%H:%M:%S',
                             level=logging.DEBUG)
 
-HTTP_SUCCESS = sets.Set([200, 201, 204])
-
+# assortment of namespaces in the catalog xml
 NAMESPACES = {
     'oslc_disc': 'http://open-services.net/xmlns/discovery/1.0/',
+    'oslc': 'http://open-services.net/ns/core#',
     'dcterms': 'http://purl.org/dc/terms/',
     'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'
 }
 
+# used to find ServiceProvider title which should equal the project area
+TITLE_TAG = '{http://purl.org/dc/terms/}title'
+# used to find the resource attribute of the ServiceProvider.details element
+RESOURCE_KEY = '{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource'
+
 class RQMClient(object):
-    httpRequest = None
     logger = logging.getLogger('RtcClient')
 
-    def __init__(self, httpConnection, username=None, password=None):
-        self.logger.info('__init__ : %s' % repr(httpConnection))
-        self.httpRequest = HttpRequestPlus(httpConnection, username, password)
+    def __init__(self, http_connection, username=None, password=None, authheaders= {}, cookies = {}):
+        self.http_request = HttpClient(http_connection, username, password, authheaders, cookies)
+
+        # login to RQM server, get cookie for subsequent requests
+        headers = {'Accept' : 'application/xml'}
+        form_data = 'j_username=%s&j_password=%s' % (self.http_request.username, self.http_request.password)
+        url = '/qm/service/com.ibm.rqm.common.service.rest.IOptionRestService/j_security_check'
+
+        response = self.http_request.post(url, content=form_data, headers=headers)
+
+        self.http_request.cookies = response.cookies
+
 
     @staticmethod
-    def createClient(httpConnection, username=None, password=None):
-        return RQMClient(httpConnection, username, password)
+    def create_client(http_connection, username=None, password=None, authheaders= {}, cookies = {}):
+        return RQMClient(http_connection, username, password, authheaders, cookies)
 
 
     def check_connection(self):
-        contentType = "application/json"
         headers = {'Accept' : 'application/json', 'Content-Type' : 'application/json'}
         url = '/qm/rootservices'
 
-        response = self.httpRequest.get(url, contentType=contentType, headers=headers)
-        if response.getStatus() not in HTTP_SUCCESS:
-            self._error('Unable to check connection', response)
+        response = self.http_request.get(url, headers=headers)
+
+        self.logger.debug('check_connection: status: %s' % str(response.status_code))
+
+        return True
 
     # Unsure if this is useful
     # 1. Find out the URI for an existing iteration [HOW?] (there is no REST API to create an iteration). 
@@ -72,12 +87,11 @@ class RQMClient(object):
     def run_test_suite(self, project_area, tser_id):
         context_id = self._get_context_id(project_area)
         if context_id is None:
-            self._error('Project area "%s" not found.' % project_area)
+            raise Exception('Project area "%s" not found.' % project_area)
 
-        self.logger.debug('run_test_suite: context id: "%s"' % context_id)
-        print 'Running test plan in project "%s"' % context_id
+        self.logger.info('run_test_suite: context id: "%s"' % context_id)
+        print('Running test plan in project "%s"' % context_id)
 
-        contentType = "application/json"
         headers = {'Accept' : 'application/json', 'Content-Type' : 'application/json'}
         url = '/service/com.ibm.rqm.execution.common.service.rest.ITestcaseExecutionRecordRestService/executeDTO'
         body = {
@@ -85,50 +99,56 @@ class RQMClient(object):
             'projectAreaAlias': context_id
         }
 
-        response = self.httpRequest.post(url, body, contentType=contentType, headers=headers)
-        if response.getStatus() not in HTTP_SUCCESS:
-            self._error('Unable to run test suite', response)
+        response = self.http_request.post(url, body, headers=headers)
 
-        self.logger.debug('run_test_suite: response: '+response.response)
+        self.logger.info('run_test_suite: status: %s' % str(response.status_code))
 
-        return response.header['Content-Location'] # result_url
+        results_url = response.headers['Content-Location']
+        return  results_url
 
 
     def get_test_results(self, result_url):
-        
-        contentType = "application/json"
         headers = {'Accept' : 'application/json', 'Content-Type' : 'application/json'}
 
-        response = self.httpRequest.get(result_url, contentType=contentType, headers=headers)
-        if response.getStatus() not in HTTP_SUCCESS:
-            self._error('Unable to get test results', response)
+        self.logger.info('get_test_results: result_url: "%s"' % result_url)
+        print('Retrieving test results from "%s"' % result_url)
 
-        self.logger.debug('run_test_suite: response: '+response.response)
+        response = self.http_request.get(result_url, headers=headers)
 
-        return response.response
+        self.logger.info('get_test_results: status: %s' % str(response.status_code))
+        self.logger.debug('get_test_results: response: '+response.content)
+
+        return response.content
 
 
     # private methods ---------------------------------
 
     # get the project context id give the project area
     def _get_context_id(self, project_area):
-        contentType = "application/json"
-        headers = {'Accept' : 'application/json', 'Content-Type' : 'application/json'}
+        headers = {'Accept' : 'application/xml'}
         url = '/qm/oslc_qm/catalog'
 
-        response = self.httpRequest.get(url, contentType=contentType, headers=headers)
-        if response.getStatus() not in HTTP_SUCCESS:
-            self._error('Unable to create work item, catalog request failed.', response)
+        response = self.http_request.get(url, headers=headers)
 
-        ascii_xml = self._strip_unicode(response.response)
-        root = ET.fromstring(ascii_xml)
+        root = ET.fromstring(response.content)
 
         # find project area
-        for srvprov in root.iterfind('.//oslc_disc:ServiceProvider', NAMESPACES):
+        for srvprov in root.findall('.//oslc:ServiceProvider', NAMESPACES):
             for child in srvprov:
-                if child.tag == '{http://purl.org/dc/terms/}title' and child.text == project_area:
-                    url = srvprov.find('./oslc_disc:details', NAMESPACES).attrib.values()[0]
-                    return url[url.rfind('/')+1:]
-    
+                if child.tag == TITLE_TAG and child.text == project_area:
+                    details = srvprov.find('./oslc:details', NAMESPACES)
+                    attribs = details.attrib
+                    if RESOURCE_KEY in attribs:
+                        url = attribs[RESOURCE_KEY]
+                        return url[url.rfind('/')+1:]
+
         return None
+
+
+    def _print_info(self, obj):
+        self.logger.debug('Type: %s' % type(obj))
+        self.logger.debug('Vars: %s' % vars(obj))
+        self.logger.debug('Dir:  %s' % dir(obj))
+        self.logger.debug('obj ------\n')
+        self.logger.debug(obj)
 
